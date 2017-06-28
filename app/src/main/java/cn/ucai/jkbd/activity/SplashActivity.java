@@ -1,10 +1,12 @@
-package cn.ucai.jkbd;
+package cn.ucai.jkbd.activity;
 
 import android.content.Intent;
 import android.os.Bundle;
 import android.os.CountDownTimer;
 import android.support.annotation.Nullable;
 import android.support.v7.app.AppCompatActivity;
+
+import cn.ucai.jkbd.R;
 
 /**
  * Created by clawpo on 2017/6/27.
