@@ -8,7 +8,7 @@ import android.view.View;
 import android.widget.Toast;
 
 import cn.ucai.jkbd.R;
-import cn.ucai.jkbd.bean.exam;
+import cn.ucai.jkbd.bean.Exam;
 import cn.ucai.jkbd.utils.OkHttpUtils;
 
 public class MainActivity extends AppCompatActivity {
@@ -27,15 +27,22 @@ public class MainActivity extends AppCompatActivity {
     }
 
     public void test(android.view.View view) {
-        OkHttpUtils<exam> utils=new OkHttpUtils<>(this);
+        OkHttpUtils<Exam> utils=new OkHttpUtils<>(this);
         String uri="http://101.251.196.90:8080/JztkServer/examInfo";
         utils.url(uri)
-                .targetClass(exam.class)
-                .execute(new OkHttpUtils.OnCompleteListener<exam>(){
+                .targetClass(Exam.class)
+                .execute(new OkHttpUtils.OnCompleteListener<Exam>(){
 
                     @Override
-                    public void onSuccess(exam result) {
-                        Log.e("main","result="+result);
+                    public void onSuccess(Exam exam) {
+
+                        Log.e("main","result="+exam);
+                        Intent intent=new Intent(MainActivity.this,RandomTest.class);
+
+                        Bundle bundle = new Bundle();
+                        bundle.putSerializable("exam",exam);
+                        intent.putExtras(bundle);
+                        startActivity(intent);
                     }
 
                     @Override
@@ -45,8 +52,7 @@ public class MainActivity extends AppCompatActivity {
                 });
 
 
-        Intent intent=new Intent(MainActivity.this,RandomTest.class);
-        startActivity(intent);
+
     }
 
     public void test_all(android.view.View view) {

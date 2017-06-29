@@ -1,10 +1,12 @@
 package cn.ucai.jkbd.bean;
 
+import java.io.Serializable;
+
 /**
  * Created by LEO on 2017/6/28.
  */
 
-public class exam {
+public class Exam implements Serializable{
 
     /**
      * subjectTitle : c1
