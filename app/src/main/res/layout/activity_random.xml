@@ -1,6 +1,8 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    android:orientation="vertical" android:layout_width="match_parent"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:orientation="vertical"
+    android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="@mipmap/main">
 
@@ -22,20 +24,20 @@
             android:layout_gravity="left"
             android:layout_marginLeft="20dp"
             android:layout_marginTop="20dp"
-            android:text="考试科目：c1"/>
+            tools:text="考试科目：c1"/>
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_gravity="left"
             android:layout_marginLeft="20dp"
-            android:text="考试数量:100"/>
+            tools:text="考试数量:100"/>
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_gravity="left"
             android:layout_marginLeft="20dp"
             android:layout_marginBottom="20dp"
-            android:text="考试时间：10分钟"/>
+            tools:text="考试时间：10分钟"/>
 
         <View
             android:layout_width="match_parent"
@@ -52,14 +54,24 @@
         android:orientation="vertical"
         android:gravity="center_horizontal">
 
-
-
-        <TextView
+        <LinearLayout
             android:layout_width="match_parent"
-            android:layout_height="20dp"
-            android:layout_gravity="center"
-            android:layout_marginLeft="20dp"
-            android:text="这个标题是何含义？"/>
+            android:layout_height="wrap_content"
+            android:orientation="horizontal">
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="left"
+                android:layout_marginLeft="20dp"
+                android:text="1."/>
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="left"
+                tools:text="这个标题是何含义？"/>
+        </LinearLayout>
+
+
 
         <ImageButton
             android:layout_width="100dp"
@@ -69,30 +81,70 @@
         android:layout_width="match_parent"
         android:layout_height="10dp"
         android:layout_gravity="center" />
-        <TextView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_gravity="left"
-            android:layout_marginLeft="20dp"
-            android:text="A:考试数量:100"/>
-        <TextView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_gravity="left"
-            android:layout_marginLeft="20dp"
-            android:text="B:考试数量:100"/>
-        <TextView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_gravity="left"
-            android:layout_marginLeft="20dp"
-            android:text="C:考试数量:100"/>
-        <TextView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_gravity="left"
-            android:layout_marginLeft="20dp"
-            android:text="D:考试数量:100"/>
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="left"
+                android:layout_marginLeft="20dp"
+                android:text="A:"/>
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="left"
+                tools:text="考试数量:100"/>
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="left"
+                android:layout_marginLeft="20dp"
+                android:text="B:"/>
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="left"
+                tools:text="考试数量:100"/>
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="left"
+                android:layout_marginLeft="20dp"
+                android:text="C:"/>
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="left"
+                tools:text="考试数量:100"/>
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="left"
+                android:layout_marginLeft="20dp"
+                android:text="D:"/>
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="left"
+                tools:text="考试数量:100"/>
+        </LinearLayout>
+
 
         <TextView
             android:layout_width="match_parent"
