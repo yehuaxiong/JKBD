@@ -6,7 +6,7 @@ import java.util.List;
  * Created by LEO on 2017/6/28.
  */
 
-public class obj {
+public class Result {
     private int error_code;
     private String reason;
     private List<exam> exams;

@@ -23,7 +23,8 @@ public class MainActivity extends AppCompatActivity {
     }
 
     public void test(android.view.View view) {
-        Toast.makeText(this,"测试",Toast.LENGTH_LONG).show();
+        Intent intent=new Intent(MainActivity.this,RandomTest.class);
+        startActivity(intent);
     }
 
     public void test_all(android.view.View view) {
