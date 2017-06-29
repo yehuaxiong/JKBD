@@ -49,4 +49,13 @@ public class exam {
     public void setQuestionCount(int questionCount) {
         this.questionCount = questionCount;
     }
+
+    @Override
+    public String toString() {
+        return "考试信息{" +
+                "考试科目='" + subjectTitle + '\'' +
+                ", 剩余时间=" + limitTime +
+                ", 考题数量=" + questionCount +
+                '}';
+    }
 }
