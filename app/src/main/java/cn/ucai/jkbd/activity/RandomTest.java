@@ -5,6 +5,7 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.widget.TextView;
 
+import cn.ucai.jkbd.ExamApplication;
 import cn.ucai.jkbd.R;
 import cn.ucai.jkbd.bean.Exam;
 
@@ -19,11 +20,17 @@ public class RandomTest extends Activity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_random);
 
-        Intent intent = this.getIntent();
-        Exam exam=(Exam)intent.getSerializableExtra("exam");
+//        Intent intent = this.getIntent();
+//        Exam exam=(Exam)intent.getSerializableExtra("exam");
+        Exam exam= ExamApplication.getInstance().getExam();
+
         subject= (TextView) findViewById(R.id.subject);
         limitTime= (TextView) findViewById(R.id.limitTime);
         questionCount= (TextView) findViewById(R.id.questionCount);
+
+//        subject.setText(""+exam.getSubjectTitle());
+//        limitTime.setText(""+exam.getLimitTime());
+//        questionCount.setText(""+exam.getQuestionCount());
 
         subject.setText(""+exam.getSubjectTitle());
         limitTime.setText(""+exam.getLimitTime());

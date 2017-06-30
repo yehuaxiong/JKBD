@@ -27,31 +27,32 @@ public class MainActivity extends AppCompatActivity {
     }
 
     public void test(android.view.View view) {
-        OkHttpUtils<Exam> utils=new OkHttpUtils<>(this);
-        String uri="http://101.251.196.90:8080/JztkServer/examInfo";
-        utils.url(uri)
-                .targetClass(Exam.class)
-                .execute(new OkHttpUtils.OnCompleteListener<Exam>(){
+//        OkHttpUtils<Exam> utils=new OkHttpUtils<>(this);
+//        String uri="http://101.251.196.90:8080/JztkServer/examInfo";
+//        utils.url(uri)
+//                .targetClass(Exam.class)
+//                .execute(new OkHttpUtils.OnCompleteListener<Exam>(){
+//
+//                    @Override
+//                    public void onSuccess(Exam exam) {
+//
+//                        Log.e("main","result="+exam);
+//                        Intent intent=new Intent(MainActivity.this,RandomTest.class);
+//
+//                        Bundle bundle = new Bundle();
+//                        bundle.putSerializable("exam",exam);
+//                        intent.putExtras(bundle);
+//                        startActivity(intent);
+//                    }
+//
+//                    @Override
+//                    public void onError(String error) {
+//                        Log.e("main","error="+error);
+//                    }
+//                });
 
-                    @Override
-                    public void onSuccess(Exam exam) {
-
-                        Log.e("main","result="+exam);
-                        Intent intent=new Intent(MainActivity.this,RandomTest.class);
-
-                        Bundle bundle = new Bundle();
-                        bundle.putSerializable("exam",exam);
-                        intent.putExtras(bundle);
-                        startActivity(intent);
-                    }
-
-                    @Override
-                    public void onError(String error) {
-                        Log.e("main","error="+error);
-                    }
-                });
-
-
+        Intent intent=new Intent(MainActivity.this,RandomTest.class);
+        startActivity(intent);
 
     }
 
