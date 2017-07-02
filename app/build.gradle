@@ -31,4 +31,5 @@ dependencies {
     compile 'com.squareup.okio:okio-parent:1.13.0'
     compile 'com.squareup.okhttp3:okhttp-urlconnection:3.8.1'
     compile 'com.google.code.gson:gson:2.8.1'
+    compile 'com.squareup.picasso:picasso:2.5.2'
 }
