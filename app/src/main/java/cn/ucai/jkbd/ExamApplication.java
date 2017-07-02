@@ -11,7 +11,11 @@ import cn.ucai.jkbd.activity.MainActivity;
 import cn.ucai.jkbd.activity.RandomTest;
 import cn.ucai.jkbd.bean.Exam;
 import cn.ucai.jkbd.bean.Question;
+import cn.ucai.jkbd.bean.Result;
+import cn.ucai.jkbd.biz.ExamBiz;
+import cn.ucai.jkbd.biz.IExamBiz;
 import cn.ucai.jkbd.utils.OkHttpUtils;
+import cn.ucai.jkbd.utils.ResultUtils;
 
 /**
  * Created by LEO on 2017/6/30.
@@ -22,26 +26,20 @@ public class ExamApplication extends Application {
     List<Question> questionList;
     public static ExamApplication instance;
 
+    IExamBiz iExamBiz;
+
+
+    public ExamApplication() {
+        new Thread(new Runnable() {
+            @Override
+            public void run() {
+                iExamBiz=new ExamBiz();
+                iExamBiz.ExamStart();
+            }
+        }).start();
+    }
+
     public Exam getExam() {
-        OkHttpUtils<Exam> utils=new OkHttpUtils<>(this);
-        String uri="http://101.251.196.90:8080/JztkServer/examInfo";
-        utils.url(uri)
-                .targetClass(Exam.class)
-                .execute(new OkHttpUtils.OnCompleteListener<Exam>(){
-
-                    @Override
-                    public void onSuccess(Exam exam) {
-
-                        Log.e("main","result=------"+exam);
-                        ExamApplication.this.exam=exam;
-                    }
-
-                    @Override
-                    public void onError(String error) {
-                        Log.e("main","error="+error);
-                    }
-                });
-
         return exam;
     }
 

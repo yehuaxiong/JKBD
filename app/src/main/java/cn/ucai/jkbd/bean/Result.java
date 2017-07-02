@@ -9,7 +9,7 @@ import java.util.List;
 public class Result {
     private int error_code;
     private String reason;
-    private List<Exam> exams;
+    private List<Question> result;
 
     public String getReason() {
         return reason;
@@ -28,11 +28,11 @@ public class Result {
     }
 
 
-    public List<Exam> getExams() {
-        return exams;
+    public List<Question> getResult() {
+        return result;
     }
 
-    public void setExams(List<Exam> exams) {
-        this.exams = exams;
+    public void setResult(List<Question> result) {
+        this.result = result;
     }
 }
