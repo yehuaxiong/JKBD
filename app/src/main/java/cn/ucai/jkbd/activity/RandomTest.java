@@ -7,7 +7,10 @@ import android.content.Intent;
 import android.content.IntentFilter;
 import android.os.Bundle;
 import android.util.Log;
+import android.view.View;
 import android.widget.ImageButton;
+import android.widget.LinearLayout;
+import android.widget.ProgressBar;
 import android.widget.TextView;
 
 import com.squareup.picasso.Picasso;
@@ -26,9 +29,11 @@ import cn.ucai.jkbd.biz.IExamBiz;
  */
 
 public class RandomTest extends Activity {
-    private TextView subject,limitTime,questionCount;
+    private TextView subject,limitTime,questionCount,tv_loading;
     private TextView tv_id,tv_question,q1,q2,q3,q4;
     private ImageButton img_pic;
+    private LinearLayout linearLayout;
+    private ProgressBar pb_loading;
 
     Exam exam;
     List<Question> questionList;
@@ -37,6 +42,9 @@ public class RandomTest extends Activity {
 
     boolean isExam=false;
     boolean isQustion=false;
+
+    boolean isExamReceiver=false;
+    boolean isQustionReceiver=false;
 
     LoadExamBroadcast loadExamBroadcast;
     LoadQuestionBroadcast loadQuestionBroadcast;
@@ -49,10 +57,6 @@ public class RandomTest extends Activity {
         loadExamBroadcast=new LoadExamBroadcast();
         loadQuestionBroadcast=new LoadQuestionBroadcast();
         setListener();
-
-//        Exam exam= ExamApplication.getInstance().getExam();
-//        List<Question> questionList=ExamApplication.getInstance().getQuestionList();
-
 
         initView();
 
@@ -86,31 +90,37 @@ public class RandomTest extends Activity {
     }
 
     private void initData(){
-        if(isExam&&isQustion){
-//            Exam exam= ExamApplication.getInstance().getExam();
-//            List<Question> questionList=ExamApplication.getInstance().getQuestionList();
-            exam= ExamApplication.getInstance().getExam();
-            if(exam!=null){
-                subject.setText(""+exam.getSubjectTitle());
-                limitTime.setText(""+exam.getLimitTime());
-                questionCount.setText(""+exam.getQuestionCount());
-            }else{
-                Log.e("exam","exam为空！");
-            }
+        if(isExamReceiver&&isQustionReceiver){
+            if(isExam&&isQustion){
+                linearLayout.setVisibility(View.GONE);
 
-            questionList=ExamApplication.getInstance().getQuestionList();
-            if(questionList!=null){
-                tv_id.setText(questionList.get(0).getId()+".");
-                tv_question.setText(""+questionList.get(0).getQuestion());
-                q1.setText(""+questionList.get(0).getItem1());
-                q2.setText(""+questionList.get(0).getItem2());
-                q3.setText(""+questionList.get(0).getItem3());
-                q4.setText(""+questionList.get(0).getItem4());
-                Picasso.with(this).load(questionList.get(0).getUrl()).into(img_pic);
+                exam= ExamApplication.getInstance().getExam();
+                if(exam!=null){
+                    subject.setText(""+exam.getSubjectTitle());
+                    limitTime.setText(""+exam.getLimitTime());
+                    questionCount.setText(""+exam.getQuestionCount());
+                }else{
+                    Log.e("exam","exam为空！");
+                }
+
+                questionList=ExamApplication.getInstance().getQuestionList();
+                if(questionList!=null){
+                    tv_id.setText(questionList.get(0).getId()+".");
+                    tv_question.setText(""+questionList.get(0).getQuestion());
+                    q1.setText(""+questionList.get(0).getItem1());
+                    q2.setText(""+questionList.get(0).getItem2());
+                    q3.setText(""+questionList.get(0).getItem3());
+                    q4.setText(""+questionList.get(0).getItem4());
+                    Picasso.with(this).load(questionList.get(0).getUrl()).into(img_pic);
+                }else{
+                    Log.e("onCreate:question","questionList为空！");
+                }
             }else{
-                Log.e("onCreate:question","questionList为空！");
+                pb_loading.setVisibility(View.GONE);
+                tv_loading.setText("加载失败，点击屏幕重新加载！");
             }
         }
+
     }
 
     private void initView(){
@@ -125,6 +135,10 @@ public class RandomTest extends Activity {
         q3= (TextView) findViewById(R.id.tv_C);
         q4= (TextView) findViewById(R.id.tv_D);
         img_pic= (ImageButton) findViewById(R.id.img_pic);
+
+        linearLayout= (LinearLayout) findViewById(R.id.ll_loading);
+        tv_loading= (TextView) findViewById(R.id.tv_loading);
+        pb_loading= (ProgressBar) findViewById(R.id.pb_loading);
     }
 
     class LoadExamBroadcast extends BroadcastReceiver{
@@ -135,6 +149,7 @@ public class RandomTest extends Activity {
             if(isSuccess){
                 isExam=true;
             }
+            isExamReceiver=true;
             initData();
         }
     }
@@ -147,6 +162,7 @@ public class RandomTest extends Activity {
             if(isSuccess){
                 isQustion=true;
             }
+            isQustionReceiver=true;
             initData();
         }
     }
