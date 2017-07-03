@@ -22,6 +22,10 @@ import cn.ucai.jkbd.utils.ResultUtils;
  */
 
 public class ExamApplication extends Application {
+    public static String LOAD_EXAM="load_exam";
+    public static String LOAD_QUESTION="load_question";
+    public static String LOAD_DATA_SUCCESS="load_data_success";
+
     Exam exam;
     List<Question> questionList;
     public static ExamApplication instance;
@@ -29,15 +33,15 @@ public class ExamApplication extends Application {
     IExamBiz iExamBiz;
 
 
-    public ExamApplication() {
-        new Thread(new Runnable() {
-            @Override
-            public void run() {
-                iExamBiz=new ExamBiz();
-                iExamBiz.ExamStart();
-            }
-        }).start();
-    }
+//    public ExamApplication() {
+//        new Thread(new Runnable() {
+//            @Override
+//            public void run() {
+//                iExamBiz=new ExamBiz();
+//                iExamBiz.ExamStart();
+//            }
+//        }).start();
+//    }
 
     public Exam getExam() {
         return exam;

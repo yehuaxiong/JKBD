@@ -113,10 +113,10 @@
 
         <ImageButton
             android:id="@+id/img_pic"
-            android:layout_width="100dp"
-            android:layout_height="100dp"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
             android:background="@null"
-            android:src="@mipmap/btn" />
+            tools:src="@mipmap/btn" />
         <TextView
         android:layout_width="match_parent"
         android:layout_height="10dp"
