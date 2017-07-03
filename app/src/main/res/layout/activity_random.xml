@@ -175,6 +175,7 @@
         </LinearLayout>
 
         <LinearLayout
+            android:id="@+id/ll_C"
             android:layout_width="match_parent"
             android:layout_height="wrap_content">
             <TextView
@@ -192,6 +193,7 @@
         </LinearLayout>
 
         <LinearLayout
+            android:id="@+id/ll_D"
             android:layout_width="match_parent"
             android:layout_height="wrap_content">
             <TextView
@@ -229,11 +231,13 @@
                 android:layout_marginRight="30dp"
                 android:text="B"/>
             <CheckBox
+                android:id="@+id/cb_C"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginRight="30dp"
                 android:text="C"/>
             <CheckBox
+                android:id="@+id/cb_D"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginRight="30dp"
