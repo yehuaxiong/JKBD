@@ -252,12 +252,14 @@
             android:layout_height="wrap_content"
             android:gravity="center">
             <Button
+                android:onClick="pre"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:drawableLeft="@mipmap/exam_pre32x32"
                 android:text="上一题"
                 android:background="@null"/>
             <Button
+                android:onClick="next"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:drawableRight="@mipmap/exam_next32x32"

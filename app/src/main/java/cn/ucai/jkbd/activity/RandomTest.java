@@ -36,6 +36,7 @@ public class RandomTest extends Activity {
     private ProgressBar pb_loading;
 
     Exam exam;
+    Question question;
     List<Question> questionList;
 
     IExamBiz iExamBiz;
@@ -106,15 +107,22 @@ public class RandomTest extends Activity {
                     Log.e("exam","exam为空！");
                 }
 
-                questionList=ExamApplication.getInstance().getQuestionList();
-                if(questionList!=null){
-                    tv_id.setText(questionList.get(0).getId()+".");
-                    tv_question.setText(""+questionList.get(0).getQuestion());
-                    q1.setText(""+questionList.get(0).getItem1());
-                    q2.setText(""+questionList.get(0).getItem2());
-                    q3.setText(""+questionList.get(0).getItem3());
-                    q4.setText(""+questionList.get(0).getItem4());
-                    Picasso.with(this).load(questionList.get(0).getUrl()).into(img_pic);
+//                questionList=ExamApplication.getInstance().getQuestionList();
+                question=iExamBiz.getQuestion();
+                if(question!=null){
+                    tv_id.setText(iExamBiz.getIndex()+1+".");
+                    tv_question.setText(""+question.getQuestion());
+                    q1.setText(""+question.getItem1());
+                    q2.setText(""+question.getItem2());
+                    q3.setText(""+question.getItem3());
+                    q4.setText(""+question.getItem4());
+                    if(question.getUrl()!=null&&!question.getUrl().equals("")){
+                        img_pic.setVisibility(View.VISIBLE);
+                        Picasso.with(this).load(question.getUrl()).into(img_pic);
+                    }else{
+                        img_pic.setVisibility(View.GONE);
+                    }
+
                 }else{
                     Log.e("onCreate:question","questionList为空！");
                 }
@@ -150,6 +158,16 @@ public class RandomTest extends Activity {
         linearLayout= (LinearLayout) findViewById(R.id.ll_loading);
         tv_loading= (TextView) findViewById(R.id.tv_loading);
         pb_loading= (ProgressBar) findViewById(R.id.pb_loading);
+    }
+
+    public void pre(View view) {
+        iExamBiz.Pre();
+        initData();
+    }
+
+    public void next(View view) {
+        iExamBiz.Next();
+        initData();
     }
 
     class LoadExamBroadcast extends BroadcastReceiver{

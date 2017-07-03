@@ -1,5 +1,6 @@
 package cn.ucai.jkbd.biz;
 
+import cn.ucai.jkbd.bean.Question;
 import cn.ucai.jkbd.dao.IExamDao;
 
 /**
@@ -11,4 +12,6 @@ public interface IExamBiz {
     public void Pre();
     public void Next();
     public void commit();
+    public Question getQuestion();
+    public int getIndex();
 }

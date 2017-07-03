@@ -1,5 +1,9 @@
 package cn.ucai.jkbd.biz;
 
+import java.util.List;
+
+import cn.ucai.jkbd.ExamApplication;
+import cn.ucai.jkbd.bean.Question;
 import cn.ucai.jkbd.dao.ExamDao;
 import cn.ucai.jkbd.dao.IExamDao;
 
@@ -10,28 +14,50 @@ import cn.ucai.jkbd.dao.IExamDao;
 public class ExamBiz implements IExamBiz {
     IExamDao dao;
 
+    int index=0;
+    List<Question> questionList;
+
     public ExamBiz() {
         this.dao = new ExamDao();
+    }
+    @Override
+    public int getIndex() {
+        return index;
     }
 
     @Override
     public void ExamStart() {
+        index=0;
         dao.loadExamInfo();
         dao.loadQuestionLists();
     }
 
     @Override
     public void Pre() {
-
+        if(index>0){
+            index--;
+        }
     }
 
     @Override
     public void Next() {
-
+        this.getQuestion();
+        if(index>=0&&index<questionList.size()-1){
+            index++;
+        }
     }
 
     @Override
     public void commit() {
 
+    }
+
+    @Override
+    public Question getQuestion() {
+        questionList=ExamApplication.instance.getQuestionList();
+        if(questionList.get(index)!=null){
+            return questionList.get(index);
+        }
+        return null;
     }
 }
