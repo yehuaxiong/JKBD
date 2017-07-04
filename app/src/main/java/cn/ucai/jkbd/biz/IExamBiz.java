@@ -11,7 +11,7 @@ public interface IExamBiz {
     public void ExamStart();
     public void Pre();
     public void Next();
-    public void commit();
+    public int commit();
     public Question getQuestion();
     public int getIndex();
 }
