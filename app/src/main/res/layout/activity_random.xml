@@ -92,6 +92,11 @@
                 tools:text="10分钟"/>
         </LinearLayout>
 
+        <TextView
+            android:id="@+id/tv_time"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="剩余时间：9分16秒"/>
 
 
         <View
