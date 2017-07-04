@@ -11,6 +11,7 @@ import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
 import android.widget.CheckBox;
+import android.widget.Gallery;
 import android.widget.ImageButton;
 import android.widget.LinearLayout;
 import android.widget.ProgressBar;
@@ -29,6 +30,7 @@ import cn.ucai.jkbd.bean.Exam;
 import cn.ucai.jkbd.bean.Question;
 import cn.ucai.jkbd.biz.ExamBiz;
 import cn.ucai.jkbd.biz.IExamBiz;
+import cn.ucai.jkbd.view.QuestionAdapter;
 
 /**
  * Created by LEO on 2017/6/29.
@@ -42,6 +44,8 @@ public class RandomTest extends Activity {
     private ProgressBar pb_loading;
     private RadioButton cb_A,cb_B,cb_C,cb_D;
     private RadioButton[] rb=new RadioButton[4];
+    private Gallery gallery;
+    private QuestionAdapter questionAdapter;
 
     Exam exam;
     Question question;
@@ -106,12 +110,14 @@ public class RandomTest extends Activity {
             if(isExam&&isQustion){
                 linearLayout.setVisibility(View.GONE);
 
+                //initGallery();
+
                 exam= ExamApplication.getInstance().getExam();
                 if(exam!=null){
                     subject.setText(""+exam.getSubjectTitle());
                     limitTime.setText(""+exam.getLimitTime());
                     questionCount.setText(""+exam.getQuestionCount());
-
+                    initGallery();
                     initTimer(exam);
                 }else{
                     Log.e("exam","exam为空！");
@@ -163,6 +169,11 @@ public class RandomTest extends Activity {
             }
         }
 
+    }
+
+    private void initGallery() {
+        questionAdapter=new QuestionAdapter(this);
+        gallery.setAdapter(questionAdapter);
     }
 
     private void initExam(){
@@ -277,6 +288,8 @@ public class RandomTest extends Activity {
         rb[1]=cb_B;
         rb[2]=cb_C;
         rb[3]=cb_D;
+
+        gallery= (Gallery) findViewById(R.id.gallery);
 
         cb_A.setOnClickListener(listener);
         cb_B.setOnClickListener(listener);
