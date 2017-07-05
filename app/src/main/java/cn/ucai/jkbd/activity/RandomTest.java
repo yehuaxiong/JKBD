@@ -348,9 +348,12 @@ public class RandomTest extends Activity {
         for(int i=0;i<rb.length;i++){
             if(rb[i].isChecked()){
                 iExamBiz.getQuestion().setUserAnswer(String.valueOf(i+1));
+                questionAdapter.notifyDataSetChanged();
                 return;
             }
         }
+        iExamBiz.getQuestion().setUserAnswer("");
+        questionAdapter.notifyDataSetChanged();
     }
 
     public void commit(View view) {
