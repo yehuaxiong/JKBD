@@ -10,6 +10,7 @@ import android.content.IntentFilter;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
+import android.widget.AdapterView;
 import android.widget.CheckBox;
 import android.widget.Gallery;
 import android.widget.ImageButton;
@@ -174,6 +175,16 @@ public class RandomTest extends Activity {
     private void initGallery() {
         questionAdapter=new QuestionAdapter(this);
         gallery.setAdapter(questionAdapter);
+        gallery.setOnItemClickListener(new AdapterView.OnItemClickListener() {
+            @Override
+            public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
+                Log.e("gallery","gallery item position="+position);
+                setUserAnswer();
+                iExamBiz.getQuestion(position);
+                initExam();
+                initQuestion();
+            }
+        });
     }
 
     private void initExam(){
