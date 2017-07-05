@@ -226,7 +226,11 @@ public class RandomTest extends Activity {
             if(userAnswer!=null&&!userAnswer.equals("")){
                 int a=Integer.parseInt(userAnswer)-1;
                 rb[a].setChecked(true);
+                setRadioButtonEnable(false);
+            }else{
+                setRadioButtonEnable(true);
             }
+
 
         }else{
             Log.e("initQuestion:question","questionList为空！");
@@ -345,6 +349,7 @@ public class RandomTest extends Activity {
     }
 
     public void setUserAnswer(){
+
         for(int i=0;i<rb.length;i++){
             if(rb[i].isChecked()){
                 iExamBiz.getQuestion().setUserAnswer(String.valueOf(i+1));
@@ -354,6 +359,12 @@ public class RandomTest extends Activity {
         }
         iExamBiz.getQuestion().setUserAnswer("");
         questionAdapter.notifyDataSetChanged();
+    }
+
+    public void setRadioButtonEnable(boolean b){
+        for(int i=0;i<rb.length;i++){
+            rb[i].setEnabled(b);
+        }
     }
 
     public void commit(View view) {

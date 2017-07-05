@@ -47,10 +47,12 @@ public class QuestionAdapter extends BaseAdapter {
         ImageView imv_question= (ImageView) view.findViewById(R.id.imv_question);
         TextView tv_no= (TextView) view.findViewById(R.id.tv_no);
         String ua=questionList.get(position).getUserAnswer();
+        String ra=questionList.get(position).getAnswer();
         if(ua!=null&&!ua.equals("")){
-            imv_question.setImageResource(R.mipmap.answer24x24);
+            imv_question.setImageResource(ua.equals(ra)?R.mipmap.answer24x24:R.mipmap.error_24px);
+            //imv_question.setImageResource(R.mipmap.answer24x24);
         }else{
-            imv_question.setImageResource(R.mipmap.ques24x24);
+            imv_question.setImageResource(R.mipmap.noselected);
         }
         tv_no.setText("第"+(position+1)+"题");
         return view;
