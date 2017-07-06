@@ -423,11 +423,21 @@ public class RandomTest extends Activity {
         }
     }
 
-//    public void commit(){
-//
-//    }
+    public void commit(View view){
+        AlertDialog.Builder builder=new AlertDialog.Builder(this);
+        builder.setTitle("交卷")
+                .setMessage("你还有剩余时间，确认交卷么？")
+                .setPositiveButton("确认", new DialogInterface.OnClickListener() {
+                    @Override
+                    public void onClick(DialogInterface dialog, int which) {
+                        commit();
+                    }
+                })
+                .setNegativeButton("取消",null);
+        builder.create().show();
+    }
 
-    public void commit(View view) {
+    public void commit() {
         setUserAnswer();
         int score = iExamBiz.commit();
         View inflate = View.inflate(this, R.layout.layout_result, null);

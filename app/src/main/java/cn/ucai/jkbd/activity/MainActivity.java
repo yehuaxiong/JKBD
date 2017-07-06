@@ -65,6 +65,8 @@ public class MainActivity extends AppCompatActivity {
     }
 
     public void quit(android.view.View view) {
-
+        Intent intent=new Intent();
+        setResult(RESULT_OK, intent);
+        finish();
     }
 }
