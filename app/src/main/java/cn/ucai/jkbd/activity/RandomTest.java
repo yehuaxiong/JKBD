@@ -423,6 +423,10 @@ public class RandomTest extends Activity {
         }
     }
 
+//    public void commit(){
+//
+//    }
+
     public void commit(View view) {
         setUserAnswer();
         int score = iExamBiz.commit();
@@ -440,7 +444,7 @@ public class RandomTest extends Activity {
                         finish();
                     }
                 });
-
+        builder.setCancelable(false);
         builder.create().show();
     }
 
